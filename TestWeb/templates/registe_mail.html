@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static "css/registe.css"%}" />
+      <script type="text/javascript" src="{% static "lib/jquery/1.9.1/jquery.min.js"%}"></script>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<body style="background-image: url({% static "img/1.jpg"%});height: 400px">
+    <form class="box" action="/zhuye/registe_mail/" method="post" >
+       {%csrf_token%}
+        {% if message %}
+               <div style="color: red" class="alert alert-warning">{{ message }}</div>
+       {% endif %}
+        <h1>Registe</h1>
+        <input type="text" name="username" placeholder="用户名">
+        <input type="password" name="password1" placeholder="密码">
+        <input type="password" name="password2" placeholder="确认密码">
+        <input id="btnSendCode" type="button" value="发送验证码" onclick="sendMessage()" style="float: right;height: 30px;margin-top: 10px"/>
+        <input type="email" id="email" name="email" placeholder="邮箱" style="margin-left: 138px;margin-right: 0px;">
+        <input type="submit" name="" value="提交" style="float: right;margin-left: 57px;margin-top: 0px;border: 2px solid #2ecc71;border-radius:24px">
+        <input id="code"  type="text" name="code" placeholder="验证码"style="margin-right: 0px;" />
+
+    </form>
+</body>
+<script>
+    var timeController; //timer变量，控制时间
+    var count = 40; //间隔函数，1秒执行
+    var remainCount;//当前剩余秒数
+    function sendMessage() {
+        remainCount = count;
+        //设置button效果，开始计时
+        $("#btnSendCode").attr("disabled", "true");
+        $("#btnSendCode").val("倒计时"+remainCount+"秒");//加上这一句不会出现延迟，否则倒计时延迟1s
+        timeController = setInterval("SetRemainTime()", 1000); //启动计时器，1秒执行一次
+        //向后台发送处理数据
+        var email = document.getElementById("email").value;
+
+        $.ajax({
+            type: "POST", //用POST方式传输     　　
+            url: '/zhuye/registe_mail/', //目标地址.
+            dataType: "json", //数据格式:JSON
+            data: {email:email,csrfmiddlewaretoken: '{{ csrf_token  }}'},
+            success: function() {
+                alert({{ message }});
+           }
+        });
+    }
+    //timer处理函数
+    function SetRemainTime() {
+        if (remainCount==0) {
+            clearInterval(timeController);//停止计时器
+            $("#btnSendCode").removeAttr("disabled");//启用按钮
+            $("#btnSendCode").val("请重新发送");
+        }
+        else {
+            remainCount--;
+            $("#btnSendCode").val("倒计时" + remainCount + "秒");
+        }
+    }
+</script>
+
+</html>

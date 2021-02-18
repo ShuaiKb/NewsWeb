@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+      <script src="{% static "jquery/dist/jquery.js"%}"></script>
+      <link rel="stylesheet" href="{% static "boostrap/dist/css/bootstrap.css"%}">
+      <link rel="stylesheet" href="{% static "boostrap/dist/js/bootstrap.bundle.js"%}">
+     <link rel="stylesheet" href="{% static "css/liuyan.css"%}">
+
+</head>
+
+<div class="container-lg mt-5">
+    <div class="card border p-2">
+
+        <div class="card-header text-info  border-bottom border-info" style="background-color: white;">
+            留言
+        </div>
+        <div class="card-body">
+            <form action="/liuyan/" method="post">
+                {% csrf_token %}
+            <div id="noteEdit">
+                <textarea style="border: #ccc solid 1px;width: 100%;height: 200px;
+                resize: none;" placeholder="仅限256个字..." maxlength="256" name="content"></textarea>
+            </div>
+
+            <div class="input list-inline mt-3 container-fluid ">
+                <div class="row ">
+
+                    <div class="  list-inline-item col-lg-auto  p-0">
+                        <button type="submit" class="btn  btn-info " style="width: 100%;height: 100%">发送</button>
+                    </div>
+                </div>
+            </div>
+            </form>
+            <div class=" container-fluid mt-5 border p-2" style="border-top: #17a2b8 solid 2px !important;">
+                    <div class="container comment  m-1 p-0">
+                        {% for messages in post.values %}
+                        <div style="border-bottom: lightslategray solid 1px;margin-top: 10px">
+                            <img  style="width: 50px;height: 50px" src="/static/{{ messages.img }}">
+                            <span>{{ messages.name }}</span><br/><br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span>{{ messages.content }}</span>
+                            <span class="summary-text small" style="float: right">{{ messages.time }}</span>
+                        </div>
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

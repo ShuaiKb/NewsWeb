@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Title</title>
+    <link href="{% static "front_admin-master/bootstrap/css/bootstrap.min.css"%}" rel="stylesheet" type="text/css">
+    <!--<link href="bootstrap/css/bootstrap-theme.css" rel="stylesheet" type="text/css">-->
+    <link href="{% static "front_admin-master/css/default.css"%}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top header-nav">
+    <div class="container-fluid" style="zoom:1.5;">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle show pull-left" data-target="sidebar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/index3d/">主页</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+{#            <ul class="nav navbar-nav">#}
+{#                <li><a href="#">href</a></li>#}
+{#                <li><a href="#">href</a></li>#}
+{#                <li><a href="#">href</a></li>#}
+{#            </ul>#}
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"aria-expanded="false">
+                        <i class="fa fa-user fa-fw"></i>
+                        <img width="30px"height="30px" src="/static/{{ user.userinfo }}">
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/exit1/">切换账号</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/exit/">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid main-wrap" style="zoom:1.5;">
+    <div class="sidebar">
+        <ul class="nav">
+            <li><a href="#" name="/zhuye/userinform/" onclick="change_src(this)">个人信息</a></li>
+            <li class="has-sub">
+                <a href="javascript:void(0);">
+                    <span>系统管理</span><i></i>
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="#" name="/zhuye/admin_list/" onclick="change_src(this)"><i></i>&nbsp管理员操作</a></li>
+                    <li><a href="#" name="/zhuye/news_list/" onclick="change_src(this)"><i></i>&nbsp;新闻管理</a></li>
+                    <li><a href="#"><i></i>&nbsp;留言管理</a></li>
+                    <li><a href="#"><i></i>&nbsp;数据统计</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="embed-responsive embed-responsive-16by9">
+       <iframe width="800px" height="400px" id="myif" scrolling="no" class="embed-responsive-item"  src="/zhuye/userinform/" allowfullscreen></iframe>
+    </div>
+
+</div>>
+
+</body>
+<script src="{% static "front_admin-master/js/jquery-3.2.1.js"%}"></script>
+<script src="{% static "front_admin-master/bootstrap/js/bootstrap.min.js"%}"></script>
+<script src="{% static "front_admin-master/js/default.js"%}"></script>
+<script>
+function change_src(obj){
+    var url = obj.name;
+    document.getElementById("myif").src = url;
+}
+</script>
+</html>

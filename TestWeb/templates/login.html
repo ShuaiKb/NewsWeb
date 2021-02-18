@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static "css/login.css"%}" />
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<body style="background-image: url({% static "img/1.jpg"%})">
+    <form class="box" action="/zhuye/login/" method="post" style="">
+        {% csrf_token %}
+        <h1>Login</h1>
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <div class="take">
+            <input type="submit" name="" value="登录" style="float:none"><br/><br/><br/>
+            <input style="float:left" type="button" name=""  onclick="location='/zhuye/registe_mail/'" value="邮箱注册">
+            <input style="float:right"type="button" name=""  onclick="location='/zhuye/registe_sms/'" value="手机注册">
+        </div>
+    </form>
+</body>
+
+</html>
