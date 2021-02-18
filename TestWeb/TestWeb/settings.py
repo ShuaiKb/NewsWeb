@@ -137,14 +137,14 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_SSL = True
 EMAIL_HOST = 'smtp.qq.com'  # 如果是 163 改成 smtp.163.com
 EMAIL_PORT = 465
-EMAIL_HOST_USER = '841194490@qq.com'  # 配置邮箱
-EMAIL_HOST_PASSWORD = 'yghlylunakpqbajf'  # 对应的授权码
+EMAIL_HOST_USER = '******************@qq.com'  # 配置邮箱
+EMAIL_HOST_PASSWORD = '*****************'  # 对应的授权码
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-SMS_SECRET_ID = "AKIDmgtp5LNhTt6CH8wb1hHUM1zgJqBGwhMQ"  # API秘钥管理SecretId
-SMS_SECRET_KEY = "BzZdLnV0nddIjvudFwWZNn0wwjHazAyd"  # API秘钥管理SecretKey
-SMS_APPID = '1400476949'  # 应用列表SDK AppID
-SMS_SIGN = '望尽阑珊'  # 签名管理的内容
+SMS_SECRET_ID = "********************"  # API秘钥管理SecretId
+SMS_SECRET_KEY = "**********************"  # API秘钥管理SecretKey
+SMS_APPID = '****************'  # 应用列表SDK AppID
+SMS_SIGN = '*****'  # 签名管理的内容
 
 CACHES = {
     "default": {
