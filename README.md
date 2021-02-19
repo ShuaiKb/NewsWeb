@@ -21,4 +21,6 @@ django3 +python3.6 + MySql5.7.20 + redis5.0
 15. urllib3==1.26.3
 16. yarg==0.1.9
 
-系统配置详情请看settings.qy
+系统配置详情请看TestWeb/TestWeb/settings.qy
+
+腾讯云和qq邮箱的具体配置介于安全已经替换为* 具体请自己去申请让后配置key
