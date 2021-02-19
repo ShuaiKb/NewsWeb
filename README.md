@@ -20,3 +20,5 @@ django3 +python3.6 + MySql5.7.20 + redis5.0
 14. tencentcloud-sdk-python==3.0.328
 15. urllib3==1.26.3
 16. yarg==0.1.9
+
+系统配置详情请看settings.qy
